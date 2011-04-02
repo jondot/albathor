@@ -24,12 +24,6 @@ end
 
 EOF
 
-
-puts "Downloading nunit..."
-get "http://launchpad.net/nunitv2/2.5/2.5.9/+download/NUnit-2.5.9.10348.zip", "tools/nunit.zip"
-unzip "tools/nunit.zip", :to => 'tools', :remove => true
-nunit "tools/NUnit-2.5.9.10348/bin/net-2.0"
-
 # insert commented out alba tasks here.
 
 

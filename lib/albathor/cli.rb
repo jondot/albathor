@@ -7,7 +7,7 @@ module Albathor
     include Thor::Actions
     include Albathor::AlbacoreTasks
 
-    source_paths << (File.expand_path("../../../templates",__FILE__))
+    source_paths << File.expand_path("../../../templates",__FILE__)
     source_paths << Dir.pwd
 
 
