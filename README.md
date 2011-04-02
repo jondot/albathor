@@ -8,7 +8,7 @@ A solid skeleton is now in place and a working example.
 To try out the example:
 
 	$ git clone git://github.com/jondot/albathor.git
-        $ bundler install
+    $ bundler install
 	$ rake install
 	$ cd examples/actionpack
 	$ go
