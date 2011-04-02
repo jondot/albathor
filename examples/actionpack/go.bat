@@ -1,1 +1,1 @@
-albathor init ActionPack http://pastie.org/pastes/1747823/text
+albathor init ActionPack http://pastie.org/pastes/1747823/download
