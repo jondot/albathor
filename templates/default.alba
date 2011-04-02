@@ -1,0 +1,35 @@
+
+version_code =  options.version_bumper? ? 'bumper_version.to_s' : "'1.0.0.0'" 
+
+# msbuild
+append_to_file 'Rakefile', <<-EOF, :verbose=>false
+
+BUILD_VERSION = #{version_code}
+
+desc "Build release"
+msbuild :build => :assemblyinfo do |msb|
+  msb.properties :configuration => :Release
+  msb.targets :Clean, :Build
+  msb.solution = "#{vars[:solution].name}.sln"
+end
+
+assemblyinfo :assemblyinfo do |asm|
+  asm.version = BUILD_VERSION
+  asm.file_version = BUILD_VERSION
+  asm.company_name = "COMPANY_NAME"
+  asm.product_name = "PROJECT_NAME"
+  asm.copyright = "COPYRIGHT"
+  asm.output_file = "AssemblyInfo.cs"
+end
+
+EOF
+
+
+puts "Downloading nunit..."
+get "http://launchpad.net/nunitv2/2.5/2.5.9/+download/NUnit-2.5.9.10348.zip", "tools/nunit.zip"
+unzip "tools/nunit.zip", :to => 'tools', :remove => true
+nunit "tools/NUnit-2.5.9.10348/bin/net-2.0"
+
+# insert commented out alba tasks here.
+
+

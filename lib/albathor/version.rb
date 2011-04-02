@@ -1,0 +1,3 @@
+module Albathor
+  VERSION = "0.0.1"
+end

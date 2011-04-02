@@ -1,0 +1,16 @@
+require "rubygems"
+require "bundler"
+Bundler.setup
+
+require 'albacore'
+<% if options.version_bumper? %>
+# to get the current version call bumper_version.to_s in this Rakefile.
+# to create a version file run "rake bump:init" from command line.
+# to manipulate the current version:
+#
+# rake bump:build     # bump build
+# rake bump:revision  # bump revision
+# rake bump:minor     # bump minor
+# rake bump:major     # bump major
+require 'version_bumper'
+<% end %>
