@@ -1,0 +1,1 @@
+albathor init project_types test.alba
