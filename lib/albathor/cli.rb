@@ -15,7 +15,7 @@ module Albathor
     desc "init SOLUTION_NAME [TEMPLATE_LOCATION]", "Initialize an Albacore build"
     def init(solution_name, template_location="default.alba")
       puts "Creating Albacore build for #{solution_name}.sln"
-      vars[:solution] = Solution.new "#{solution_name}.sln"
+      vars[:solution] = VS::Solution.new "#{solution_name}.sln"
 
       template 'Rakefile'
       template 'Gemfile'
