@@ -1,1 +1,2 @@
-aspnet_task "out"
+assembly_info_task :name => :assy
+aspnet_task "out", :depends => [ :assy ]
