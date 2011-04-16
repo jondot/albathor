@@ -22,10 +22,6 @@ module Albathor
         parse(File.read(@file))
       end
 
-      def find_project(defaults=nil)
-        projects.find(OpenStruct.new(defaults)){|p| yield p}
-      end
-
       def directory
         File.dirname(file)
       end
@@ -81,6 +77,10 @@ module Albathor
         @projects = []
 
         populate_projects File.read(@file)
+      end
+
+      def find_project(defaults=nil)
+        projects.find{|p| yield p} || OpenStruct.new(defaults) 
       end
 
       def has_test_projects?
