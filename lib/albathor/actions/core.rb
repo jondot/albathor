@@ -5,13 +5,9 @@ module Albathor
   module AlbacoreTasks
     include FileUtils
 
-    attr_reader :settings
     BUILD_FILE = 'Rakefile'
-
-    def initialize
-      @settings = {}
-    end
-
+	
+	
     def unzip(zipfile, opts)
       opts = {:to =>'.'}.merge(opts)
       Zip::ZipFile.open(zipfile) do |z|
@@ -24,7 +20,7 @@ module Albathor
       rm zipfile if opts[:remove]
     end
 
-
+	
 private
     def inject_dependency(params)
       ' => ' + params[:depends].inspect.to_s if params[:depends] 

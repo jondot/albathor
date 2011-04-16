@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'pathname'
+require 'ostruct'
 
 module Albathor
   module VS
@@ -19,6 +20,10 @@ module Albathor
         throw "Project #{@file} must exist." unless File.exists? @file
       
         parse(File.read(@file))
+      end
+
+      def find_project(defaults=nil)
+        projects.find(OpenStruct.new(defaults)){|p| yield p}
       end
 
       def directory

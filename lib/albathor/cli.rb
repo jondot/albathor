@@ -1,5 +1,6 @@
 require 'thor/group'
 require 'albathor/vs/solution'
+require 'albathor/vs/environment'
 require 'albathor/actions/albacore_tasks'
 
 module Albathor
@@ -16,7 +17,7 @@ module Albathor
     def init(solution_name, template_location="default.alba")
       puts "Creating Albacore build for #{solution_name}.sln"
       vars[:solution] = VS::Solution.new "#{solution_name}.sln"
-      vars[:env] = VS::Environment new
+      vars[:env] = VS::Environment.new
 
       template 'Rakefile'
       template 'Gemfile'
@@ -27,6 +28,10 @@ module Albathor
     end
 
   protected
+	def settings
+	  @settings ||= {}
+	end
+	
     def vars
       @vars ||= {}
     end
