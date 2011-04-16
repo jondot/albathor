@@ -1,10 +1,7 @@
 
-version_code =  options.version_bumper? ? 'bumper_version.to_s' : "'1.0.0.0'" 
 
 # msbuild
 append_to_file 'Rakefile', <<-EOF, :verbose=>false
-
-BUILD_VERSION = #{version_code}
 
 desc "Build release"
 msbuild :build => :assemblyinfo do |msb|

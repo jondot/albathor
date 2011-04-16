@@ -81,13 +81,15 @@ module Albathor
       def has_test_projects?
         test_projects.count > 0
       end
+
       def test_projects
-        projects.select { |p| p.name =~ /(Test|Tests)$/}
+        projects.select { |p| p.test? || p.name =~ /(Test|Tests)$/ }
       end
 
       def has_web_projects?
         web_projects.count > 0
       end
+
       def web_projects
         projects.select {|p| p.web? }
       end
@@ -95,7 +97,7 @@ module Albathor
 
       def populate_projects(contents)
         contents.lines.each do |line|
-          @projects << Project.new(File.join(@path, $1), :solution_path => path) if(line =~ /Project.*=.*?,\s*"(.*)"\s*,.*?/)
+          @projects << Project.new(File.join(@path, $1), :solution_path => path) if(line =~ /Project.*=.*?,\s*"(.*)"\s*,.*?/ && File.exist?(File.join(@path, $1)))
         end
       end
     end

@@ -1,0 +1,6 @@
+window :name=>"tests" do
+  run 'gvim test\*.rb'
+end
+
+run 'gvim lib\albathor\*.rb'
+
