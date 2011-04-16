@@ -5,7 +5,12 @@ module Albathor
   module AlbacoreTasks
     include FileUtils
 
+    attr_reader :settings
     BUILD_FILE = 'Rakefile'
+
+    def initialize
+      @settings = {}
+    end
 
     def unzip(zipfile, opts)
       opts = {:to =>'.'}.merge(opts)
@@ -23,6 +28,15 @@ module Albathor
 private
     def inject_dependency(params)
       ' => ' + params[:depends].inspect.to_s if params[:depends] 
+    end
+
+    def inject_task_name(opts, default_name)
+      ":#{opts[:name] || default_name}"
+    end
+
+    def tuck_and_get(param_name, param_default_value)
+      return settings[param_name] = param_default_value if param_default_value
+      settings[param_name]
     end
   end
 end 

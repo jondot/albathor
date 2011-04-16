@@ -1,8 +1,9 @@
 module Albathor
   module AlbacoreTasks
-    def assembly_info_task(exe_folder, opts={})
+    def assembly_info_task(opts={})
       append_to_file BUILD_FILE, <<-EOF, :verbose => false
-assemblyinfo :assemblyinfo#{inject_dependencies} do |asm|
+
+assemblyinfo #{ inject_task_name opts, 'assemblyinfo' }#{ inject_dependency opts } do |asm|
   asm.version = BUILD_VERSION
   asm.file_version = BUILD_VERSION
   asm.company_name = "#{vars[:env].organization}"
