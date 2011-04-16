@@ -1,5 +1,5 @@
 module Albathor
-  module AlbacoreTask
+  module AlbacoreTasks
     def xunit_task(exe_folder, opts={})
       append_to_file BUILD_FILE, <<-EOF, :verbose => false
 desc "Run tests with XUnit"

@@ -1,5 +1,5 @@
 module Albathor
-  module AlbacoreTask
+  module AlbacoreTasks
     def output_task
 
     end

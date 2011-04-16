@@ -1,5 +1,5 @@
 module Albathor
-  module AlbacoreTask
+  module AlbacoreTasks
     def nuget_task(exe_folder, input_folder, opts)
       append_to_file BUILD_FILE, <<-EOF, :verbose => false
 

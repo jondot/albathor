@@ -1,5 +1,5 @@
 module Albathor
-  module AlbacoreTask
+  module AlbacoreTasks
     def aspnet_task(output_folder, opts={})
       web_proj_dir = vars[:solution].has_web_projects? ? vars[:solution].web_projects[0].directory : 'FILL_ME'
 

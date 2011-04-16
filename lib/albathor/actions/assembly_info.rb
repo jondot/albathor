@@ -1,5 +1,5 @@
 module Albathor
-  module AlbacoreTask
+  module AlbacoreTasks
     def assembly_info_task(exe_folder, opts={})
       append_to_file BUILD_FILE, <<-EOF, :verbose => false
 assemblyinfo :assemblyinfo#{inject_dependencies} do |asm|
